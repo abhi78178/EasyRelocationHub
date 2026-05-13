@@ -427,6 +427,90 @@
   .form-msg.success { background:rgba(16,185,129,.14); color:#6EE7B7; border:1px solid rgba(110,231,183,.25); display:block; }
   .form-msg.error { background:rgba(248,113,113,.14); color:#FCA5A5; border:1px solid rgba(252,165,165,.25); display:block; }
 
+  /* ── SUCCESS POPUP OVERLAY ── */
+  .success-overlay {
+    position:fixed;inset:0;z-index:9999;
+    background:rgba(0,0,0,0.75);
+    backdrop-filter:blur(6px);
+    display:flex;align-items:center;justify-content:center;
+    padding:20px;
+    opacity:0;pointer-events:none;
+    transition:opacity 0.4s ease;
+  }
+  .success-overlay.show {
+    opacity:1;pointer-events:all;
+  }
+  .success-popup {
+    background:#fff;
+    border-radius:24px;
+    padding:3rem 2.5rem;
+    max-width:500px;width:100%;
+    text-align:center;
+    position:relative;
+    transform:translateY(30px);
+    transition:transform 0.4s ease;
+    box-shadow:0 30px 80px rgba(0,0,0,0.3);
+  }
+  .success-overlay.show .success-popup {
+    transform:translateY(0);
+  }
+  .success-icon {
+    width:80px;height:80px;border-radius:50%;
+    background:linear-gradient(135deg,#10b981,#059669);
+    display:flex;align-items:center;justify-content:center;
+    font-size:2.2rem;margin:0 auto 1.5rem;
+    box-shadow:0 8px 24px rgba(16,185,129,0.4);
+  }
+  .success-popup h2 {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:2rem;color:#0f172a;
+    letter-spacing:1px;margin-bottom:0.8rem;
+  }
+  .success-popup .success-sub {
+    color:#64748b;font-size:1rem;
+    line-height:1.7;margin-bottom:1.5rem;
+  }
+  .success-steps {
+    background:#f8fafc;border-radius:14px;
+    padding:1.5rem;margin-bottom:1.8rem;
+    text-align:left;
+  }
+  .success-step {
+    display:flex;align-items:flex-start;
+    gap:12px;margin-bottom:1rem;
+  }
+  .success-step:last-child{margin-bottom:0;}
+  .success-step-icon {
+    width:34px;height:34px;border-radius:50%;
+    background:var(--primary,#0F766E);
+    color:#fff;font-size:0.85rem;font-weight:800;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .success-step-text h4 {
+    font-size:0.88rem;font-weight:700;
+    color:#0f172a;margin-bottom:2px;
+  }
+  .success-step-text p {
+    font-size:0.82rem;color:#64748b;line-height:1.5;
+  }
+  .success-close-btn {
+    width:100%;padding:14px;
+    background:var(--primary,#0F766E);
+    color:#fff;border:none;border-radius:10px;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:1.2rem;letter-spacing:1px;
+    cursor:pointer;
+    transition:background 0.2s,transform 0.15s;
+  }
+  .success-close-btn:hover {
+    background:var(--primary-dark,#084f49);
+    transform:translateY(-1px);
+  }
+  .success-name-highlight {
+    color:var(--primary,#0F766E);font-weight:800;
+  }
+
   /* FOOTER */
   footer { background:#07111F; padding:70px 8% 30px; border-top:0; }
   .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
@@ -744,13 +828,42 @@ nav {
     <div class="hero-bg"></div>
     <div class="hero-accent"></div>
     <div class="hero-content">
-      <span class="hero-tag">🇮🇳 Pan India Network</span>
-      <h1>Move <span class="red">Smarter.</span><br>Move Safer.<br>Move <span class="red">Easy.</span></h1>
-      <p>India's trusted packers & movers aggregator. We connect you with verified, top-rated moving companies across all major Indian cities — at the best prices.</p>
+      <span class="hero-tag">🇮🇳 Pan India Packers &amp; Movers Aggregator</span>
+      <h1>Let's <span class="red">Shiftingo!</span><br>We Find You<br>The <span class="red">Best Deal.</span></h1>
+      <p>Fill the form → We compare prices from <strong style="color:#fff;">200+ verified movers</strong> across India → You get the <strong style="color:#fff;">best deal</strong> for your shift. 100% Free. No Hidden Charges.</p>
+
+      <!-- HOW IT WORKS - 3 STEP VISUAL -->
+      <div style="display:flex;gap:0;margin:1.5rem 0 2rem;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:10px 0 0 10px;padding:12px 18px;">
+          <span style="font-size:1.5rem;">📋</span>
+          <div>
+            <div style="color:#fff;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Step 1</div>
+            <div style="color:rgba(255,255,255,0.7);font-size:0.85rem;">Fill Your Details</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;color:var(--accent);font-size:1.2rem;font-weight:900;">→</div>
+        <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);padding:12px 18px;">
+          <span style="font-size:1.5rem;">🔍</span>
+          <div>
+            <div style="color:#fff;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Step 2</div>
+            <div style="color:rgba(255,255,255,0.7);font-size:0.85rem;">We Compare 200+ Movers</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;color:var(--accent);font-size:1.2rem;font-weight:900;">→</div>
+        <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:0 10px 10px 0;padding:12px 18px;">
+          <span style="font-size:1.5rem;">🏆</span>
+          <div>
+            <div style="color:#fff;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Step 3</div>
+            <div style="color:rgba(255,255,255,0.7);font-size:0.85rem;">You Get Best Price!</div>
+          </div>
+        </div>
+      </div>
+
       <div class="hero-btns">
-        <a href="#" class="btn-primary" onclick="showPage('contact',document.querySelectorAll('.nav-links a')[3])">Get Free Quote</a>
+        <a href="#" class="btn-primary" onclick="showPage('contact',document.querySelectorAll('.nav-links a')[3])">🚚 Get Free Quote Now</a>
         <a href="#" class="btn-outline" onclick="showPage('services',document.querySelectorAll('.nav-links a')[2])">Our Services</a>
       </div>
+      <p style="color:rgba(255,255,255,0.45);font-size:0.82rem;margin-top:1rem;">✅ 100% Free &nbsp;|&nbsp; ✅ No Hidden Charges &nbsp;|&nbsp; ✅ Best Price Guaranteed</p>
     </div>
     <div class="hero-stats">
       <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Cities Covered</div></div>
@@ -761,7 +874,7 @@ nav {
 
   <!-- Quick Quote Strip -->
   <div class="quote-strip">
-    <h2>GET YOUR FREE MOVING QUOTE IN 60 SECONDS</h2>
+    <h2>🔍 COMPARE 200+ MOVERS &amp; GET THE BEST PRICE — FREE IN 60 SECONDS!</h2>
     <div class="quote-form">
       <input type="text" id="q_from" placeholder="Moving From (City)"/>
       <input type="text" id="q_to" placeholder="Moving To (City)"/>
@@ -1167,6 +1280,20 @@ function showPage(id, linkEl) {
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
+// ─── CLOSE SUCCESS POPUP ───
+function closeSuccess() {
+  document.getElementById('successOverlay').classList.remove('show');
+  document.body.style.overflow = '';
+  // Scroll back to top of contact page
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+// Close popup when clicking outside
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('successOverlay').addEventListener('click', function(e) {
+    if(e.target === this) closeSuccess();
+  });
+});
+
 // ─── QUOTE STRIP → AUTO-FILL CONTACT FORM ───
 function goToQuote() {
   // Read values from quick quote strip
@@ -1250,8 +1377,12 @@ async function submitToGoogleSheet() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
-    msg.className = 'form-msg success';
-    msg.textContent = '✓ Request submitted! We will contact you within 30 minutes.';
+    // Show beautiful success popup
+    const userName = document.getElementById('fname').value.trim();
+    document.getElementById('successName').textContent = userName ? userName : 'there';
+    document.getElementById('successOverlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+    // Clear form
     document.querySelectorAll('#contact input, #contact select, #contact textarea').forEach(el => el.value = '');
   } catch(e) {
     msg.className = 'form-msg error';
@@ -1306,6 +1437,45 @@ DEPLOYMENT STEPS:
 9. Replace YOUR_GOOGLE_APPS_SCRIPT_URL in index.html
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 -->
+
+<!-- ── SUCCESS POPUP ── -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-popup">
+    <div class="success-icon">🎉</div>
+    <h2>Query Received!</h2>
+    <p class="success-sub">
+      Thank you <span class="success-name-highlight" id="successName"></span>! 
+      We have received your moving request and our team is already working on it.
+    </p>
+    <div class="success-steps">
+      <div class="success-step">
+        <div class="success-step-icon">1</div>
+        <div class="success-step-text">
+          <h4>Comparing 200+ Movers</h4>
+          <p>We are comparing prices from all verified packers &amp; movers available for your route.</p>
+        </div>
+      </div>
+      <div class="success-step">
+        <div class="success-step-icon">2</div>
+        <div class="success-step-text">
+          <h4>Finding Best Deal for You</h4>
+          <p>Our team will shortlist the top 3 most affordable and reliable movers for your shift.</p>
+        </div>
+      </div>
+      <div class="success-step">
+        <div class="success-step-icon">3</div>
+        <div class="success-step-text">
+          <h4>We Will Contact You Shortly</h4>
+          <p>You will receive the best quotes on your phone &amp; email within a few working hours.</p>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:0.82rem;color:#94a3b8;margin-bottom:1.2rem;">
+      📞 Need urgent help? Call us: <strong style="color:#0f172a;">078178 71140</strong>
+    </p>
+    <button class="success-close-btn" onclick="closeSuccess()">Got It — Thank You! 🚚</button>
+  </div>
+</div>
 
 </body>
 </html>
