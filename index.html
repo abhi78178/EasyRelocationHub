@@ -400,6 +400,24 @@
   .city-tag { background:#fff; color:var(--navy); border-color:rgba(15,23,42,.08); padding:9px 18px; cursor:default; transition:all .2s ease; }
   .city-tag:hover { background:var(--primary); color:#fff; border-color:var(--primary); transform:translateY(-2px); }
 
+
+  .service-page-link {
+    display:inline-flex;
+    margin-top:16px;
+    padding:10px 16px;
+    border-radius:999px;
+    background:linear-gradient(135deg,var(--primary),#14B8A6);
+    color:#fff !important;
+    text-decoration:none;
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    box-shadow:0 10px 22px rgba(20,184,166,.18);
+  }
+  .service-page-link:hover { transform:translateY(-2px); }
+  .service-page-link.secondary { background:linear-gradient(135deg,var(--accent),#FB923C); }
+
   /* CONTACT */
   .contact-body { padding:86px 8%; display:grid; grid-template-columns:.85fr 1.4fr; gap:4rem; background:var(--surface); }
   @media(max-width:900px){ .contact-body { grid-template-columns:1fr; gap:3rem; } }
@@ -1147,7 +1165,7 @@ nav {
         <p>Our home shifting service covers everything from studio apartments to large bungalows. Our verified partners provide end-to-end relocation including professional packing using quality materials, safe loading/unloading, transport, and unpacking at your destination.</p>
         <div class="service-includes">
           <span class="tag">Professional Packing</span><span class="tag">Loading & Unloading</span><span class="tag">Transport</span><span class="tag">Unpacking</span><span class="tag">Furniture Assembly</span>
-        </div>
+        </div><a class="service-page-link" href="home-shifting-services.html">View Home Shifting Page →</a>
       </div>
     </div>
     <div class="service-detail">
@@ -1157,7 +1175,7 @@ nav {
         <p>Office moves require precision planning and minimal downtime. Our commercial moving partners specialize in handling office furniture, IT infrastructure, servers, and confidential documents with complete security and professionalism.</p>
         <div class="service-includes">
           <span class="tag">IT Equipment</span><span class="tag">Furniture Disassembly</span><span class="tag">Server Handling</span><span class="tag">Weekend Moves</span><span class="tag">Minimal Downtime</span>
-        </div>
+        </div><a class="service-page-link" href="office-relocation-services.html">View Office Relocation Page →</a>
       </div>
     </div>
     <div class="service-detail">
@@ -1167,7 +1185,7 @@ nav {
         <p>Moving your car or bike? Our vehicle transport partners use fully enclosed carriers with hydraulic loading systems and real-time GPS tracking. Your vehicle arrives at the destination in perfect condition.</p>
         <div class="service-includes">
           <span class="tag">Cars & Bikes</span><span class="tag">Enclosed Carriers</span><span class="tag">GPS Tracking</span><span class="tag">Door-to-Door</span><span class="tag">Insurance Included</span>
-        </div>
+        </div><a class="service-page-link" href="car-transport-services.html">Car Transport Page →</a> <a class="service-page-link secondary" href="bike-transport-services.html">Bike Transport Page →</a>
       </div>
     </div>
     <div class="service-detail">
