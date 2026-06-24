@@ -942,8 +942,8 @@ nav {
       </div>
 
       <div class="hero-btns">
-        <a href="#" class="btn-primary" onclick="showPage('contact',document.querySelector('[data-page="contact"]'))">🚚 Get Free Quote Now</a>
-        <a href="#" class="btn-outline" onclick="showPage('services',document.querySelector('[data-page="services"]'))">Our Services</a>
+        <a href="javascript:void(0);" class="btn-primary" onclick="showPage('contact'); return false;">🚚 Get Free Quote Now</a>
+        <a href="javascript:void(0);" class="btn-outline" onclick="showPage('services'); return false;">Our Services</a>
       </div>
       <p style="color:rgba(255,255,255,0.45);font-size:0.82rem;margin-top:1rem;">✅ 100% Free &nbsp;|&nbsp; ✅ No Hidden Charges &nbsp;|&nbsp; ✅ Best Price Guaranteed</p>
     </div>
@@ -1354,13 +1354,31 @@ nav {
 
 <script>
 // ─── PAGE NAVIGATION ───
-function showPage(id, linkEl) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.main-nav-link').forEach(a => a.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  if(linkEl) linkEl.classList.add('active');
-  if(id) history.replaceState(null, '', '#' + id);
-  window.scrollTo({top:0, behavior:'smooth'});
+function showPage(id, linkEl = null) {
+  document.querySelectorAll('.page').forEach(function(page) {
+    page.classList.remove('active');
+  });
+
+  var targetPage = document.getElementById(id);
+  if (!targetPage) return false;
+
+  targetPage.classList.add('active');
+
+  document.querySelectorAll('.main-nav-link').forEach(function(link) {
+    link.classList.remove('active');
+  });
+
+  var activeLink = linkEl || document.querySelector('.main-nav-link[data-page="' + id + '"]');
+  if (activeLink) {
+    activeLink.classList.add('active');
+  }
+
+  if (id) {
+    history.replaceState(null, '', '#' + id);
+  }
+
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  return false;
 }
 
 // ─── CLOSE SUCCESS POPUP ───
